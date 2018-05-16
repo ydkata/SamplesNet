@@ -14,11 +14,16 @@ namespace WebApplication2.Service.DB
     /// <typeparam name="T"></typeparam>
     public interface IRepository<T>
     {
-        T GetOne(String id);
+        T GetOne(decimal id);
 
         IEnumerable<T> GetAll();
 
-        string Add(T item);
+        /// <summary>
+        /// 登録できた場合、BoardのIDを返却します。
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        decimal Add(T item);
 
         void Update(T item);
 
@@ -43,15 +48,18 @@ namespace WebApplication2.Service.DB
             this.dbContext = context ?? new BoardDBContext();
         }
 
-        public string Add(BoardInfoEnitity item)
+        public decimal Add(BoardInfoEnitity item)
         {
             // IDの採番処理が必要
-
+            long id = this.dbContext.GetBoardID();
+            item.Id = id;
             // TODO DBContextを使って作れる？
             this.dbContext.Boards.Add(item);
             int res = this.dbContext.SaveChanges();
 
-            return "特に実装なし";
+            // エラー判定すること
+
+            return item.Id;
         }
 
         public void Delete(BoardInfoEnitity item)
@@ -63,16 +71,16 @@ namespace WebApplication2.Service.DB
         {
             // DBは使わないので固定値を返却する。
             IEnumerable <BoardInfoEnitity> res  = new List<BoardInfoEnitity>(){
-                   new BoardInfoEnitity()  { Id = "002", Title = "Test", Body = "これはてすと" }
-                ,      new BoardInfoEnitity()  { Id = "003", Title = "Test2", Body = "これはてすと２" }
+                   new BoardInfoEnitity()  { Id = 2, Title = "Test", Body = "これはてすと" }
+                ,      new BoardInfoEnitity()  { Id = 3, Title = "Test2", Body = "これはてすと２" }
             };
       
             return res;
         }
 
-        public BoardInfoEnitity GetOne(String id)
+        public BoardInfoEnitity GetOne(decimal id)
         {
-            return new BoardInfoEnitity() { Id ="001", Title = "1つ", Body = "1Messageです" };
+            return new BoardInfoEnitity() { Id =1, Title = "1つ", Body = "1Messageです" };
         }
 
         public void Update(BoardInfoEnitity item)

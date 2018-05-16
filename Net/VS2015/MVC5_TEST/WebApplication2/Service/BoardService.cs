@@ -15,7 +15,7 @@ namespace WebApplication2.Service
     /// ServiceIF
     /// </summary>
     public interface IBoardService {
-        string Create(BoardCreateInfoMdl pMdl);
+        decimal Create(BoardCreateInfoMdl pMdl);
         BoardInfoMdl Get(BoardInfoMdl pMdl);
     }
 
@@ -45,7 +45,7 @@ namespace WebApplication2.Service
         /// ボードを作成する。
         /// </summary>
         /// <param name="mdl"></param>
-        public string Create(BoardCreateInfoMdl pMdl)
+        public decimal Create(BoardCreateInfoMdl pMdl)
         {
             BoardInfoEnitity mdl = new BoardInfoEnitity();
             mdl.Title = pMdl.Title;

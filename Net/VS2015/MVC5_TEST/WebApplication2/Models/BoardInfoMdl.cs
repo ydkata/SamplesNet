@@ -13,7 +13,7 @@ namespace WebApplication2.Models
         /// <summary>
         /// Id
         /// </summary>
-        public string Id { get; set; }
+        public decimal Id { get; set; }
 
         /// <summary>
         /// Title

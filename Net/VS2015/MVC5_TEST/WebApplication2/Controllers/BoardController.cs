@@ -54,7 +54,7 @@ namespace WebApplication2.Controllers
             try
             {
                 // TODO: Add insert logic here
-                string res = boardSrv.Create(mdl);
+                decimal res = boardSrv.Create(mdl);
 
                 return RedirectToAction("Index");
             }
