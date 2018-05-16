@@ -1,0 +1,5 @@
+PackagesFolderを削除したので参照切れが発生する。
+PMConsolから下記コマンドを実行する。
+Update-Package -Reinstall
+
+

@@ -1,0 +1,25 @@
+﻿
+
+@model WebApplication2.Models.BoardCreateInfoMdl
+
+@{
+    Layout = "/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@* // FormTabの作成 *@
+    @using (Html.BeginForm("Create", "Board", FormMethod.Post))
+    {
+        <p>
+            タイトル:
+            @Html.TextBoxFor( m => m.Title )
+        </p>
+        <p>本文:</p>
+        <div>
+            @Html.TextAreaFor( m => m.Body, new { rows = "4", cols = "50" })
+        </div>
+        <p>
+           <input type="submit" value="作成">
+        </p>
+    }

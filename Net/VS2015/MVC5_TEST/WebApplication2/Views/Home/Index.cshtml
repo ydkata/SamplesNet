@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "/Views/Shared/_DefaultLayout.cshtml";
+    // _DefaultLayoutのTitleと連動
+    ViewBag.Title = "Index Page";
+}
+
+<%= // @{}より下の部分が@RenderBody()の部分に挿入されます。%>
+test
+
+<div>
+    @Html.ActionLink("Bulletin board List", "", "Board")
+</div>
+<div>
+    @Html.ActionLink("Add Bulletin board", "", "Board")
+</div>
